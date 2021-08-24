@@ -1,13 +1,26 @@
 # Landing Page Project
 
 ## Table of Contents
+* [Project Title](#projectDescription)
 
-* [Instructions](#instructions)
+* [Project Description](#projectDescription)
 
-## Instructions
+* [Dependencies](#dependecies)
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+* [Usage](#usage)
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Project Title
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+Landing Page
+
+## Project Description
+
+This project focuses on manipulating the DOM by building a multi-section landing page and dynamically build a navigation menu according to the number of sections. Additionally, the performance was improved through using the DocumentFragment interface to reduce the reflow/repaint occurences to avoid intensive tasks.
+
+## Dependencies
+
+None
+
+## Usage
+
+To open the website, you can clone the repository to your github account or download the code as a zip file. Then open index.html using any installed browser. 
