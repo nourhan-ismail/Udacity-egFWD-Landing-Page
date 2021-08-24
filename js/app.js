@@ -21,10 +21,10 @@
 //returns nodelist which contains all sections
 const sections = document.querySelectorAll("section");
 
-//the navBar for populating it with links for each section
+//returns the navBar for populating it with links for each section
 const navBar = document.getElementById("navbar__list");
 
-//to append dynmically the navigation links when created
+//to append dynamically the navigation links when created
 let docFragment = document.createDocumentFragment();
 /**
  * End Global Variables
@@ -36,27 +36,31 @@ let docFragment = document.createDocumentFragment();
  Start Main functions
  */
 //build the nav
-function buildNav(){
+function buildNav() {
     let sectionsLength = sections.length;
     for (let i = 0; i < sectionsLength; i++) {
         let newNavItem = document.createElement("li");
         newNavItem.innerHTML = sections[i].getAttribute("data-nav");
         newNavItem.classList.add("menu__link");
         docFragment.appendChild(newNavItem);
-    
+
         // Scroll to section on link click
         newNavItem.addEventListener("click", function () {
             sections[i].scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
         });
-  
+
     }
     navBar.appendChild(docFragment);
-    navBar.addEventListener("click",setActiveLink);
- 
+
+    //to distinguish which link is currently clicked
+    navBar.addEventListener("click", setActiveLink);
+
 }
 
 //These functions are called when scroll event is trigerred
 const setActiveClass = () => {
+
+    //to remove the styling from the sections that are not in the viewport
     sections.forEach((inactiveSection) => {
         if (inactiveSection.classList.contains("your-active-class")) {
             inactiveSection.classList.remove("your-active-class");
@@ -66,9 +70,12 @@ const setActiveClass = () => {
     sections.forEach((section) => {
         let currentSectionTop = section.getBoundingClientRect().top;
 
-        //0 value to enure that the top is not a negative number, so sections that are not in the viewport are ignored
-        //the value 410 is an arbitrary value to ensure that the current section is the active one
-        //since there is no two sections have top less than or equal to 410, so top 450 will only correspond to one section (which is the active section in the viewport)
+        /*0 value is used to ensure that the top of the section is not a negative number, 
+        so sections that are not in the viewport are ignored.
+        The value 410 is an arbitrary value to ensure that the current section in the viewport is the active one,
+        since there is no two sections together have top less than or equal to 410, so the section that has top between 0 and 410 
+        will only correspond to one section (which is the active section in the viewport)
+        */
         if (currentSectionTop >= 0 && currentSectionTop <= 410) {
             section.classList.add("your-active-class");
         }
@@ -78,19 +85,21 @@ const setActiveClass = () => {
 
 
 //to change the styling of the clicked link
-function setActiveLink(e){
+function setActiveLink(e) {
     const navItems = document.getElementsByTagName('li');
 
-    for(let i = 0;i<navItems.length;i++)
-   {
+    for (let i = 0; i < navItems.length; i++) {
         navItems[i].style.background = "white";
-       navItems[i].style.color = "black";
+        navItems[i].style.color = "black";
     }
     e.target.style.background = "black";
-   e.target.style.color = "white";
-    
+    e.target.style.color = "white";
+
 }
 
+/**
+ End Main functions
+ */
 
 //to ensure that the DOM is ready
 document.addEventListener('DOMContentLoaded', buildNav);
