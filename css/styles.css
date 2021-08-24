@@ -92,15 +92,12 @@ section {
 }
 
 /*active link*/
-.active__link{
+#active__link{
+    color:#fff;
     background-color: #000;
+    
 }
 
-
-/*active section*/
-.active__section{
-    background-color: red;
-}
 /* Header Styles */
 .page__header {
     background: #fff;
