@@ -39,6 +39,7 @@ let docFragment = document.createDocumentFragment();
 function buildNav() {
     let sectionsLength = sections.length;
     for (let i = 0; i < sectionsLength; i++) {
+        
         let newNavItem = document.createElement("li");
         newNavItem.innerHTML = sections[i].getAttribute("data-nav");
         newNavItem.classList.add("menu__link");
